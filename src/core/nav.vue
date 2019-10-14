@@ -13,6 +13,9 @@
 		<el-menu-item index="/dashboard">
 			<i class="mdi mdi-gauge"></i><span slot="title">Dashboard</span>
 		</el-menu-item>
+    <el-menu-item index="/front-client">
+    <i class="mdi mdi-credit-card"></i><span slot="title">Front Client</span>
+</el-menu-item>
 		<el-menu-item index="/calendar">
 			<i class="mdi mdi-calendar"></i><span slot="title">Calendar</span>
 		</el-menu-item>

@@ -15,6 +15,8 @@ import ForgotPassword from '../views/pages/authentication/ForgotPassword.vue'
 import Profile from '../views/pages/Profile.vue'
 import NotFound from '../views/pages/NotFound.vue'
 import Invoice from '../views/pages/Invoice.vue'
+import Index from '../views/front-client/Index.vue'
+
 
 //ui
 import Themes from '../views/ui/Themes.vue'
@@ -38,287 +40,299 @@ Vue.use(Router)
 
 
 const router = new Router({
-	mode: 'history',
-	routes: [
-		{
-			path: '/',
-			alias: '/dashboard',
-			name: 'dashboard',
-			component: Dashboard,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['app']
-			}
-		},
-		{
-			path: '/calendar',
-			name: 'calendar',
-			component: Calendar,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['app']
-			}
-		},
-		{
-			path: '/contacts',
-			name: 'contacts',
-			component: Contacts,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['users', 'address', 'book', 'app']
-			}
-		},
-		{
-			path: '/gallery',
-			name: 'gallery',
-			component: Gallery,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['photo', 'app']
-			}
-		},
-		{
-			path: '/timeline',
-			name: 'timeline',
-			component: Timeline,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['app']
-			}
-		},
-		{
-			path: '/themes',
-			name: 'themes',
-			component: Themes,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['ui']
-			}
-		},
-		{
-			path: '/icons',
-			name: 'icons',
-			component: Icons,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft
-			},
-			children: [
-				{
-					path: 'md-icons',
-					name: 'md-icons',
-					component: MdIcons,
-					meta: {
-						auth: true,
-						layout: layouts.navLeft,
-						searchable: true,
-						title: 'Material Design Icons',
-						tags: ['material design']
-					}
-				},
-				{
-					path: 'flag-icons',
-					name: 'flag-icons',
-					component: FlagIcons,
-					meta: {
-						auth: true,
-						layout: layouts.navLeft,
-						searchable: true,
-						title: 'Flag Icons',
-						tags: ['list', 'ui']
-					}
-				}
-			]
-		},
-		{
-			path: '/multi-language',
-			name: 'multi-language',
-			component: MultiLanguage,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['ui', 'translate']
-			}
-		},
-		{
-			path: '/helper-classes',
-			name: 'helper-classes',
-			component: HelperClasses,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				title: 'Helper Classes',
-				tags: ['ui']
-			}
-		},
-		{
-			path: '/typography',
-			name: 'typography',
-			component: Typography,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				title: 'Typography',
-				tags: ['ui']
-			}
-		},
-		layout,
-		editors,
-		charts,
-		maps,
-		tables,
-		element,
-		{
-			path: '/profile',
-			name: 'profile',
-			component: Profile,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['pages']
-			}
-		},
-		{
-			path: '/invoice',
-			name: 'invoice',
-			component: Invoice,
-			meta: {
-				auth: true,
-				layout: layouts.navLeft,
-				searchable: true,
-				tags: ['pages']
-			}
-		},
-		{
-			path: '/login',
-			name: 'login',
-			component: Login,
-			meta: {
-				layout: layouts.contenOnly
-			}
-		},
-		{
-			path: '/register',
-			name: 'register',
-			component: Register,
-			meta: {
-				layout: layouts.contenOnly
-			}
-		},
-		{
-			path: '/forgot-password',
-			name: 'forgot-password',
-			component: ForgotPassword,
-			meta: {
-				layout: layouts.contenOnly
-			}
-		},
-		{ 
-			path: '/logout',
-			beforeEnter (to, from, next) {
-				auth.logout()
-				next({path:'/login'})
-			}
-		},
-		{
-			path: '*',
-			name: 'not-found',
-			component: NotFound,
-			meta: {
-				layout: layouts.contenOnly
-			}
-		}
-	]
+  mode: 'history',
+  routes: [
+    {
+      path: '/front-client',
+      name: 'front-client',
+      component: Index,
+      meta: {
+        layout: layouts.navLeft,
+        searchable: true,
+        title: 'Front Client',
+        tags: ['app']
+      }
+    },
+
+    {
+      path: '/',
+      alias: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['app']
+      }
+    },
+    {
+      path: '/calendar',
+      name: 'calendar',
+      component: Calendar,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['app']
+      }
+    },
+    {
+      path: '/contacts',
+      name: 'contacts',
+      component: Contacts,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['users', 'address', 'book', 'app']
+      }
+    },
+    {
+      path: '/gallery',
+      name: 'gallery',
+      component: Gallery,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['photo', 'app']
+      }
+    },
+    {
+      path: '/timeline',
+      name: 'timeline',
+      component: Timeline,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['app']
+      }
+    },
+    {
+      path: '/themes',
+      name: 'themes',
+      component: Themes,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['ui']
+      }
+    },
+    {
+      path: '/icons',
+      name: 'icons',
+      component: Icons,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft
+      },
+      children: [
+        {
+          path: 'md-icons',
+          name: 'md-icons',
+          component: MdIcons,
+          meta: {
+            auth: true,
+            layout: layouts.navLeft,
+            searchable: true,
+            title: 'Material Design Icons',
+            tags: ['material design']
+          }
+        },
+        {
+          path: 'flag-icons',
+          name: 'flag-icons',
+          component: FlagIcons,
+          meta: {
+            auth: true,
+            layout: layouts.navLeft,
+            searchable: true,
+            title: 'Flag Icons',
+            tags: ['list', 'ui']
+          }
+        }
+      ]
+    },
+    {
+      path: '/multi-language',
+      name: 'multi-language',
+      component: MultiLanguage,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['ui', 'translate']
+      }
+    },
+    {
+      path: '/helper-classes',
+      name: 'helper-classes',
+      component: HelperClasses,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        title: 'Helper Classes',
+        tags: ['ui']
+      }
+    },
+    {
+      path: '/typography',
+      name: 'typography',
+      component: Typography,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        title: 'Typography',
+        tags: ['ui']
+      }
+    },
+    layout,
+    editors,
+    charts,
+    maps,
+    tables,
+    element,
+    {
+      path: '/profile',
+      name: 'profile',
+      component: Profile,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['pages']
+      }
+    },
+    {
+      path: '/invoice',
+      name: 'invoice',
+      component: Invoice,
+      meta: {
+        auth: true,
+        layout: layouts.navLeft,
+        searchable: true,
+        tags: ['pages']
+      }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        layout: layouts.contenOnly
+      }
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: Register,
+      meta: {
+        layout: layouts.contenOnly
+      }
+    },
+    {
+      path: '/forgot-password',
+      name: 'forgot-password',
+      component: ForgotPassword,
+      meta: {
+        layout: layouts.contenOnly
+      }
+    },
+    {
+      path: '/logout',
+      beforeEnter(to, from, next) {
+        auth.logout()
+        next({ path: '/login' })
+      }
+    },
+    {
+      path: '*',
+      name: 'not-found',
+      component: NotFound,
+      meta: {
+        layout: layouts.contenOnly
+      }
+    }
+  ]
 })
 
 
 const l = {
-	contenOnly(){
-		store.commit('setLayout', layouts.contenOnly)
-	},
-	navLeft(){
-		store.commit('setLayout', layouts.navLeft)
-	},
-	navRight(){
-		store.commit('setLayout', layouts.navRight)
-	},
-	navTop(){
-		store.commit('setLayout', layouts.navTop)
-	},
-	navBottom(){
-		store.commit('setLayout', layouts.navBottom)
-	},
-	set(layout){
-		store.commit('setLayout', layout)
-	}
+  contenOnly() {
+    store.commit('setLayout', layouts.contenOnly)
+  },
+  navLeft() {
+    store.commit('setLayout', layouts.navLeft)
+  },
+  navRight() {
+    store.commit('setLayout', layouts.navRight)
+  },
+  navTop() {
+    store.commit('setLayout', layouts.navTop)
+  },
+  navBottom() {
+    store.commit('setLayout', layouts.navBottom)
+  },
+  set(layout) {
+    store.commit('setLayout', layout)
+  }
 }
 
 //insert here login logic
 const auth = {
-	loggedIn() {
-		return store.getters.isLogged
-	},
-	logout() {
-		store.commit('setLogout')
-	}
+  loggedIn() {
+    return store.getters.isLogged
+  },
+  logout() {
+    store.commit('setLogout')
+  }
 }
 
 router.beforeEach((to, from, next) => {
-	let authrequired = false
-	if(to && to.meta && to.meta.auth)
-		authrequired = true
+  let authrequired = false
+  if (to && to.meta && to.meta.auth)
+    authrequired = true
 
-	//console.log('authrequired', authrequired, to.name)
+  //console.log('authrequired', authrequired, to.name)
 
-	if(authrequired) {
-		if(auth.loggedIn()) {
-			if(to.name === 'login') {
-				window.location.href = '/'
-				return false
-			} else { 
-				next()
-			}
-		} else {
-			if(to.name !== 'login'){
-				window.location.href = '/login'
-				return false
-			}
-			next()
-		}
-	} else {
-		if(auth.loggedIn() && to.name === 'login'){
-			window.location.href = '/'
-			return false
-		} else {
-			next()
-		}
-	}
+  if (authrequired) {
+    if (auth.loggedIn()) {
+      if (to.name === 'login') {
+        window.location.href = '/'
+        return false
+      } else {
+        next()
+      }
+    } else {
+      if (to.name !== 'login') {
+        window.location.href = '/login'
+        return false
+      }
+      next()
+    }
+  } else {
+    if (auth.loggedIn() && to.name === 'login') {
+      window.location.href = '/'
+      return false
+    } else {
+      next()
+    }
+  }
 
-	if(to && to.meta && to.meta.layout){
-		l.set(to.meta.layout)
-	}	
+  if (to && to.meta && to.meta.layout) {
+    l.set(to.meta.layout)
+  }
 })
 
 router.afterEach((to, from) => {
-	setTimeout(()=>{
-		store.commit('setSplashScreen', false)
-	}, 500)
+  setTimeout(() => {
+    store.commit('setSplashScreen', false)
+  }, 500)
 })
 
 export default router
